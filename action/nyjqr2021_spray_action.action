@@ -1,0 +1,8 @@
+# Define the goal
+int32[] target_wood  # Specify which dishwasher we want to use
+---
+# Define the result
+int32[] dummy_result
+---
+# Define a feedback message
+int32[] dummy_feedback

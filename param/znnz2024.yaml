@@ -1,0 +1,75 @@
+keyparam:
+  init_pose: [-5.42, -6.05, 0] # [-5.77,-6.0,0] CHANGE IT: robot initial pose [X,Y,theta], theta is in radian
+  end_pose: [-5.97, 6.5, 0] # CHANGE IT: spray link's ending pose [X,Y,theta], theta is in radian
+
+  laser_in_baselink_trans_ypr: [0.10, 0, 0, 0, 0, 0] # CHANGE IT: robot's laser_link in base_link with translation + yaw pitch roll
+
+  spray_in_baselink_trans_ypr: [-0.12, 0, 0, 0, 0, 0] # CHANGE IT: robot's spray_link in base_link with translation l+ yaw pitch roll
+  spray_pt_left_in_spray_frame: [-0.05, 1.4, 0.0] # left spray point coordinate in spray link
+  spray_pt_right_in_spray_frame: [0.0, -1.4, 0.0] # right spray point coordinate in spray link
+
+  cmd_vel_x_p: 1.0  # Proportional gain for translational velocity, proportion to goal and current positional difference
+  cmd_vel_theta_p: 1.0 # Proportional gain for rotational velocity, proportion to goal and current heading difference
+  cmd_vel_x_max: 0.5 # max translational velocity
+  cmd_vel_theta_max: 0.5 # max rotational velocity
+  cmd_vel_x_min: 0.2 # min translational velocity to start the robot moving forward
+  cmd_vel_theta_min: 0.30 # min rotational velocity to start the robot rotating
+
+  spray_time: 7.0 # time need to spray one side of the wood
+  traj_x_adjust: 0.1 # twik: increase traj's X coordinate to accommodate P controller's steady state error.
+
+  # height data of woods, pre-recorded before match. 0: unknown, spray all, 1: 1.1m and 1.0m, 2: 0.8m.
+  #height_array: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  height_array: [1, 1, 2, 1,
+                 1, 2, 1, 1,
+                 1, 1, 1, 2,
+                 1, 2, 1, 2,
+                 1, 2, 2, 1,
+                 1, 1, 2, 1,
+                 1, 1, 1, 1,
+                 1, 2, 2, 2,
+                 1, 1, 1, 1] # starting pt here
+
+
+robot:
+  height: 0.5 # height of the robot base
+  width: 1.0 # width of the robot base
+  depth: 1.0 # depth of the robot base
+
+filter_laser:
+  valid_angle_ranges: [0, 2,
+                       78, 113,
+                       121, 238,
+                       246, 281,
+                       357, 359]
+
+  laser_range_limit: 5.0
+
+ekf_loc:
+  slam_dist_thr: 0.10 # run EKF SLAM after robot travels this distance
+  slam_theta_thr_deg: 10 # # run EKF SLAM after robot rotates this distance
+
+  init_cov_xy: 1.0 # uncertainty of the robot initial pose in X,Y translation
+  init_cov_theta_deg: 10 # uncertainty of the robot initial heading in degree
+  lm_std: 0.1
+
+  odom_laser_t_diff_max: 0.3 # max time difference of odometry and laser ros messages
+  laser_dist_max: 3.0 # maximum distance from laser readings, larger readings will be ignored
+  laser_data_asso_dist_thr: 0.3 # for data associattion between laser reading to wood, maximum distance between them.
+
+  odom_dist_std: 0.01 # STD for odom translational uncertainty for every slam_dist_thr defined above
+  odom_theta_std_deg: 5 # STD for odom rotational uncertainty for every slam_dist_thr defined above
+  laser_dist_std: 0.05 # STD for laser range uncertainty
+  laser_ang_std_deg: 2 # STD for laser bearing uncertainty
+
+move_base:
+  pose_diff_dist_thr: 0.1 # positional error tolerance for goal position
+  pose_diff_yaw_thr_deg: 5.0 # heading error tolerance for goal position
+  pose_diff_2d_line_yaw_thr_deg: 10.0 # # heading error tolerance when traveling to the goal position
+
+spray_server:
+  laser_dist_max: 3.0 # maximum distance from laser readings, larger readings will be ignored
+  laser_pc_search_thr: 0.7 # for data association between laser reading to wood, maximum distance between them.
+
+  angle_diff_thr_deg: 3.0 # max angular difference of robot pose for aligning spray link to wood
+

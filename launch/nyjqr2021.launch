@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <master auto="start"/>  -->
+  <param name="use_sim_time" value="true" />
+
+  <!-- Run the map server --> 
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find xnrobot_id01)/map/empty_map.yaml"/> 
+  
+  <node pkg="xnrobot_id01" type="nyjqrds2021_ekf_loc.py" name="nyjqrds2021_ekf_loc" />
+  
+  <node pkg="xnrobot_id01" type="simple_move_base_server.py" name="simple_move_base_server" />
+
+  <node pkg="xnrobot_id01" type="nyjqr2021_spray_server.py" name="nyjqr2021_spray_server" />
+  
+  <node pkg="xnrobot_id01" type="nyjqr2021_task_client.py" name="nyjqr2021_task_client" />
+
+  <node pkg="tf" type="static_transform_publisher" name="baselink2laserlink_broadcaster" args="0.1 0.0 0 0 0 0 /base_link /laser_link 100"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find xnrobot_id01)/rviz_cfg/nyjqr2021.rviz"/>
+</launch> 
+

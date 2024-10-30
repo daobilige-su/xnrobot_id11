@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools
+END
+read_data.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/read_data.m
+END
+normalize_angle.m
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/normalize_angle.m
+END
+chi2invtable.m
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/chi2invtable.m
+END
+drawellipse.m
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/drawellipse.m
+END
+drawprobellipse.m
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/drawprobellipse.m
+END
+plot_state.m
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/plot_state.m
+END
+normalize_all_bearings.m
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/normalize_all_bearings.m
+END
+read_world.m
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/read_world.m
+END
+drawrobot.m
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/lecturematerial-robotmapping/!svn/ver/22/exercises/sheet2_ekf_slam/ekf_slam_framework/octave/tools/drawrobot.m
+END
