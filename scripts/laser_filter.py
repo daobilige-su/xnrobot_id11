@@ -31,18 +31,20 @@ class LaserFilter:
         self.laser_pub = rospy.Publisher("/scan", LaserScan, queue_size=5)
         self.laser_sub = rospy.Subscriber("/scan_raw", LaserScan, self.filter_laser)
 
+        self.inf_val = 1e4
+
         return
 
     def filter_laser(self, laser_msg):
         ranges = laser_msg.ranges[:]
         ranges_np = np.array(ranges)
 
-        ranges_valid_np = -1.0*np.ones(ranges_np.shape)
+        ranges_valid_np = self.inf_val*np.ones(ranges_np.shape)
 
         # 1. flip & and make all invalid range to -1
         ranges_np = ranges_np[::-1] # reverse order for the upside down laser scanner
 
-        ranges_np[ranges_np<=0.0] = -1.0
+        ranges_np[ranges_np<=0.0] = self.inf_val
 
         # 2. take valid beams
 
@@ -60,7 +62,7 @@ class LaserFilter:
             ranges_valid_np[self.valid_angle_ranges[i,0]:self.valid_angle_ranges[i,1]] = ranges_np[self.valid_angle_ranges[i,0]:self.valid_angle_ranges[i,1]]
 
         # 3. apply range limit
-        ranges_valid_np[ranges_valid_np>self.laser_range_limit] = -1.0
+        ranges_valid_np[ranges_valid_np>self.laser_range_limit] = self.inf_val
 
         # 4. apply global coord limit
 

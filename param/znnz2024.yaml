@@ -42,6 +42,7 @@ filter_laser:
                        121, 238,
                        246, 281,
                        357, 359]
+  # valid_angle_ranges: [0, 359]
 
   laser_range_limit: 5.0
 
